@@ -11,6 +11,7 @@
 
 
 const posts = [
+
     {
         "id": 1,
         "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
@@ -19,9 +20,11 @@ const posts = [
             "name": "Phil Mangione",
             "image": "https://unsplash.it/300/300?image=15"
         },
+
         "likes": 80,
         "created": "2021-06-25"
     },
+
     {
         "id": 2,
         "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
@@ -30,9 +33,11 @@ const posts = [
             "name": "Sofia Perlari",
             "image": "https://unsplash.it/300/300?image=10"
         },
+
         "likes": 120,
         "created": "2021-09-03"
     },
+
     {
         "id": 3,
         "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
@@ -41,9 +46,11 @@ const posts = [
             "name": "Chiara Passaro",
             "image": "https://unsplash.it/300/300?image=20"
         },
+
         "likes": 78,
         "created": "2021-05-15"
     },
+    
     {
         "id": 4,
         "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
@@ -52,9 +59,11 @@ const posts = [
             "name": "Luca Formicola",
             "image": null
         },
+
         "likes": 56,
         "created": "2021-04-03"
     },
+
     {
         "id": 5,
         "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
@@ -63,7 +72,29 @@ const posts = [
             "name": "Alessandro Sainato",
             "image": "https://unsplash.it/300/300?image=29"
         },
+
         "likes": 95,
         "created": "2021-03-05"
     }
 ];
+
+// Milestone 1 - Prendendo come riferimento il layout di esempio presente nell'html, stampiamo i post del nostro feed.
+
+const containerHTML = document.querySelector("#container");
+const tplpost = querySelector("#tpl-post").content;
+
+for (let i = 0; i < posts.length; i++) {
+
+    const postHTML = tplPostHTML.cloneNode(true);
+    const {id, content, media, author, likes, created} = post[i];
+    postHTML.querySelector("profile-pic").src = author.image;
+    postHTML.querySelector("profile-pic").alt = author.name;
+    postHTML.querySelector("post-meta__author").innerHTML = author.name;
+    postHTML.querySelector("post-meta__time").innerHTML = created;
+    postHTML.querySelector("post__text").innerHTML = content;
+    postHTML.querySelector("post__image img").src = media;
+    postHTML.querySelector("post__image img").alt = `image post ${id}`;
+    postHTML.querySelector("js-like-button").database.postid = id;
+    postHTML.querySelector("js-likes-counter").innerHTML = likes;
+    containerHTML.append(postHTML);
+}
